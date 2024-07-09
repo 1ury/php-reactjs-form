@@ -38,15 +38,9 @@ Este é um projeto de sistema de mercado desenvolvido utilizando PHP no backend 
    - Certifique-se de ter o Node.js e o npm instalados no seu ambiente.
 
 2. **Configuração do Frontend**
-   - No arquivo `frontend/src/api/config.js`, ajuste a baseURL para o backend PHP:
+   - No arquivo `frontend/src/index.js`, ajuste a baseURL para o backend PHP na linha 8:
      ```javascript
-     import axios from 'axios';
-     
-     const instance = axios.create({
-         baseURL: 'http://localhost:8080/api', // ajuste conforme necessário
-     });
-     
-     export default instance;
+     axios.defaults.baseURL = 'http://localhost:8080';
      ```
 
 3. **Inicialização do Servidor de Desenvolvimento**
