@@ -1,4 +1,5 @@
 <?php
+
 class TipoProduto {
     private $pdo;
 
@@ -12,8 +13,7 @@ class TipoProduto {
     }
 
     public function create($nome, $imposto_percentual) {
-        $stmt = $this->pdo->prepare('INSERT INTO tipos_produtos (nome, imposto_percentual) VALUES (?, ?)');
-        return $stmt->execute([$nome, $imposto_percentual]);
+        $stmt = $this->pdo->prepare('INSERT INTO tipos_produtos (nome, imposto_percentual) VALUES (:nome, :imposto)');
+        return $stmt->execute(['nome' => $nome, 'imposto' => $imposto_percentual]);
     }
 }
-?>

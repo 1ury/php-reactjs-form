@@ -1,4 +1,5 @@
 <?php
+
 require '../config/database.php';
 require '../models/TipoProduto.php';
 
@@ -11,9 +12,12 @@ switch ($_SERVER['REQUEST_METHOD']) {
     case 'POST':
         $data = json_decode(file_get_contents('php://input'), true);
         $nome = $data['nome'];
-        $imposto_percentual = $data['imposto_percentual'];
-        $tipoProduto->create($nome, $imposto_percentual);
-        echo json_encode(['message' => 'Tipo de produto criado com sucesso']);
+        $imposto_percentual = $data['imposto'];
+        if ($tipoProduto->create($nome, $imposto_percentual)) {
+            echo json_encode(['message' => 'Tipo de produto criado com sucesso']);
+        } else {
+            echo json_encode(['message' => 'Erro ao criar tipo de produto'], 500);
+        }
         break;
 }
 ?>

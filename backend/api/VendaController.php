@@ -14,6 +14,5 @@ switch ($_SERVER['REQUEST_METHOD']) {
         $venda->create($itens);
         echo json_encode(['message' => 'Venda realizada com sucesso']);
         break;
-    // Outros métodos conforme necessário
 }
 ?>

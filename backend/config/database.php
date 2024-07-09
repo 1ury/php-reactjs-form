@@ -1,10 +1,9 @@
 <?php
 $host = 'localhost';
 $db = 'mercado';
-$user = 'seu_usuario';
+$user = 'postgres';
 $pass = '12345678';
 $port = '5432';
-
 $dsn = "pgsql:host=$host;port=$port;dbname=$db;";
 $options = [
     PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,

@@ -17,10 +17,10 @@ class Venda {
             $stmt = $this->pdo->prepare('INSERT INTO vendas (data) VALUES (NOW()) RETURNING id');
             $stmt->execute();
             $venda_id = $stmt->fetchColumn();
-
+            // var_dump($itens);die;
             foreach ($itens as $item) {
                 $stmt = $this->pdo->prepare('INSERT INTO itens_venda (venda_id, produto_id, quantidade, preco_unitario, imposto) VALUES (?, ?, ?, ?, ?)');
-                $stmt->execute([$venda_id, $item['produto_id'], $item['quantidade'], $item['preco_unitario'], $item['imposto']]);
+                $stmt->execute([$venda_id, $item['produto_id'], $item['quantidade'], $item['subtotal'], $item['imposto']]);
             }
 
             $this->pdo->commit();
