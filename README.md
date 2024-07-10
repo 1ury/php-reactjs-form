@@ -10,7 +10,7 @@ Este é um projeto de sistema de mercado desenvolvido utilizando PHP no backend 
    - Certifique-se de ter o PostgreSQL instalado e configurado no seu ambiente.
    - Crie um banco de dados no PostgreSQL para o projeto.
    - o backup do banco que foi utilizado para fins de teste de funcionalidade se encontra na raiz do projeto com o nome `backup.bak`
-   - Não esqueça de dar um start no postgre com o comando sudo service postgresql start (caso estiver no terminal WSL ou em um Linux)
+   - Não esqueça de dar um start no postgre com o comando `sudo service postgresql start` (caso estiver no terminal WSL ou em um Linux)
 
 2. **Configuração do Banco de Dados no Backend**
    - No arquivo `backend/config/database.php`, ajuste as configurações de conexão com o banco de dados:
