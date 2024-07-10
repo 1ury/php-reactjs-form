@@ -64,7 +64,7 @@ Os seguintes endpoints estão disponíveis para o frontend acessar:
 
 ## Endpoints do Backend
 
-Os seguintes endpoints estão disponíveis para o frontend acessar:
+Os seguintes endpoints para o backend acessar:
 
 - **Produtos:** `/api/produtos`
 - **Tipos de Produto:** `/api/tipo`
