@@ -70,6 +70,34 @@ Os seguintes endpoints para o backend acessar:
 - **Tipos de Produto:** `/api/tipo`
 - **Venda:** `/api/venda`
 
+## Testes Unitários
+## Configuração dos Testes
+   - No arquivo `backend/tests/BaseTest.php`, ajuste as configurações de conexão com o banco de dados:
+     ```php
+     <?php
+     class BaseTest extends TestCase {
+        protected $pdo;
+
+        protected function setUp(): void {
+            $this->pdo = new PDO('pgsql:host=localhost;dbname=seu_banco_de_teste', 'seu_usuario_de_teste', 'sua_senha_de_teste');
+            $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $this->createTestTables();
+        }
+     ```
+     Substitua `seu_banco_de_teste`, `seu_usuario_de_teste` e `sua_senha_de_teste` pelas suas configurações reais.
+   - Para rodar os testes unitários, com o terminal navegue até o diretório backend e execute:
+     ```
+     vendor/bin/phpunit
+     ```
+
+## Estrutura dos Testes
+1. **Os testes estão localizados no diretório backend/tests e incluem:**
+- **BaseTest.php** `Configuração base para os testes, incluindo a criação e destruição das tabelas de testes`
+- **TipoProdutoTest.php** `Testes para o model "TipoProduto"`
+- **ProdutoTest.php** `Testes para o model "Produto"`
+- **VendaTest.php** `Testes para o model "Venda"`
+- **ItemVendaTest.php** `Testes para o model "ItemVenda"`
+
 ## Considerações Finais
 
 Certifique-se de ter todas as dependências instaladas corretamente antes de iniciar o projeto. Para mais detalhes sobre as funcionalidades específicas do projeto, consulte a documentação do código fonte.
