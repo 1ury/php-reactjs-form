@@ -3,7 +3,7 @@
 require '../config/database.php';
 require '../models/TipoProduto.php';
 
-$tipoProduto = new TipoProduto($pdo);
+$tipoProduto = new App\Models\TipoProduto($pdo);
 
 switch ($_SERVER['REQUEST_METHOD']) {
     case 'GET':

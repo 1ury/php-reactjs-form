@@ -1,34 +1,22 @@
 <?php
-class Venda {
+namespace App\Models;
+
+class ItemVenda {
     private $pdo;
 
     public function __construct($pdo) {
         $this->pdo = $pdo;
     }
 
-    public function getAll() {
-        $stmt = $this->pdo->query('SELECT * FROM vendas');
-        return $stmt->fetchAll();
+    public function create($vendaId, $produtoId, $quantidade, $subtotal, $imposto) {
+        $stmt = $this->pdo->prepare('INSERT INTO itens_venda (venda_id, produto_id, quantidade, preco_unitario, imposto) VALUES (?, ?, ?, ?, ?)');
+        return $stmt->execute([$vendaId, $produtoId, $quantidade, $subtotal, $imposto]);
     }
 
-    public function create($itens) {
-        try {
-            $this->pdo->beginTransaction();
-            $stmt = $this->pdo->prepare('INSERT INTO vendas (data) VALUES (NOW()) RETURNING id');
-            $stmt->execute();
-            $venda_id = $stmt->fetchColumn();
-
-            foreach ($itens as $item) {
-                $stmt = $this->pdo->prepare('INSERT INTO itens_venda (venda_id, produto_id, quantidade, preco_unitario, imposto) VALUES (?, ?, ?, ?, ?)');
-                $stmt->execute([$venda_id, $item['produto_id'], $item['quantidade'], $item['preco_unitario'], $item['imposto']]);
-            }
-
-            $this->pdo->commit();
-            return true;
-        } catch (Exception $e) {
-            $this->pdo->rollBack();
-            throw $e;
-        }
+    public function getByVendaId($vendaId) {
+        $stmt = $this->pdo->prepare('SELECT * FROM itens_venda WHERE venda_id = ?');
+        $stmt->execute([$vendaId]);
+        return $stmt->fetchAll();
     }
 }
 ?>

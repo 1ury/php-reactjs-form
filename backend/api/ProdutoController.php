@@ -2,7 +2,7 @@
 require_once(__DIR__ . '/../config/database.php');
 require_once(__DIR__ . '/../models/Produto.php');
 
-$produto = new Produto($pdo);
+$produto = new App\Models\Produto($pdo);
 switch ($_SERVER['REQUEST_METHOD']) {
     case 'GET':
         echo json_encode($produto->getAll());

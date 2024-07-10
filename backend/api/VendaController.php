@@ -2,7 +2,7 @@
 require '../config/database.php';
 require '../models/Venda.php';
 
-$venda = new Venda($pdo);
+$venda = new App\Models\Venda($pdo);
 
 switch ($_SERVER['REQUEST_METHOD']) {
     case 'GET':
