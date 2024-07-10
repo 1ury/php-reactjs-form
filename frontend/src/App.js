@@ -1,9 +1,9 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import CadastroProduto from './components/CadastroProduto';
-import CadastroTipo from './components/CadastroTipo';
-import Venda from './components/Venda';
-import WelcomeScreen from './components/WelcomeScreen';
+import CadastroProduto from './components/CadastroProduto/CadastroProduto';
+import CadastroTipo from './components/CadastroTipo/CadastroTipo';
+import Venda from './components/Venda/Venda';
+import WelcomeScreen from './components/WelcomeScreen/WelcomeScreen';
 
 function App() {
   return (
